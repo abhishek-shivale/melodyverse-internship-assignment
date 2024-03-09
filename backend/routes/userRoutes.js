@@ -1,12 +1,20 @@
-import expres from "express";
-import { upload } from "../utils/uploadAvatar.js";
+import express from "express";
 import { SignupController } from "../controllers/userController.js";
+import multer from "multer";
 
-const userRouter = expres.Router()
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    return cb(null, "./avatar");
+  },
+  filename: function (req, file, cb) {
+    return cb(null, `${Date.now()}+ ${file.originalname}`);
+  },
+});
 
+let upload = multer({ storage });
 
-userRouter.route("/signup").post(upload.single("avater"), SignupController);
+const userRouter = express.Router();
 
+userRouter.route("/signup").post(upload.single("avatar"), SignupController);
 
-
-export default userRouter
+export default userRouter;

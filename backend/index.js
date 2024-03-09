@@ -17,21 +17,19 @@ app.use(
 );
 
 app.use(express.json());
-
+app.use(express.urlencoded({extended:false}));
 app.use(morgan("dev"));
 
-
-app.use('/api/v1',userRouter)
+app.use("/api/v1", userRouter);
 
 app.use("/api/v1/post", postRouter);
 
-app.use((err,req,res,next)=>{
+app.use((err, req, res, next) => {
+  console.log("This is error from error function" + err);
 
-  console.log("This is error from error function"+ err)
-  
-   res.status(500).json({
-     success: false,
-     message: "Something went wrong!",
-   });
-})
+  res.status(500).json({
+    success: false,
+    message: "Something went wrong!",
+  });
+});
 export default app;

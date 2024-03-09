@@ -10,6 +10,8 @@ export const SignupController = asyncMiddleware(async (req, res, next) => {
 
   const avatar = req.file ? req.file.avatar : null;
 
+  console.log(avatar + "rfsd" +req.body.avatar.type);
+
   if (!email || !password) {
     return res.status(411).json({
       success: false,
