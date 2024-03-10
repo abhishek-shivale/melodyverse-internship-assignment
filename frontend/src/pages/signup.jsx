@@ -5,6 +5,7 @@ import { useState } from "react"; // Import useState
 import { RegisterFunction } from "../controllers/authController";
 
 export default function Signup() {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [avatar, setavatar] = useState();
 
@@ -86,11 +87,20 @@ export default function Signup() {
                   required: true,
                   minLength: 8,
                 })}
-                type="password"
+                type={showPassword ? "text" : "password"} 
                 placeholder="Password"
                 autoComplete="current-password"
                 className="block p-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
+              <input
+                type="checkbox"
+                onChange={() => setShowPassword(!showPassword)} 
+                id="showPasswordToggle"
+                className="mt-2"
+              />
+              <label htmlFor="showPasswordToggle" className="ml-2">
+                Show password
+              </label>
               {errors.password && (
                 <span className="text-red-500">
                   Password must be at least 8 characters long

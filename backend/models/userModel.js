@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: String,
   },
+  verifed:{
+   type: Boolean,
+   default: false   
+  }
 });
 
 const userModel = mongoose.model("User", userSchema);
