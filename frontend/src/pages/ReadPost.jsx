@@ -2,7 +2,9 @@ import React from 'react'
 
 function ReadPost() {
   return (
-    <div>ReadPost</div>
+    <div>
+      
+    </div>
   )
 }
 

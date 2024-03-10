@@ -21,7 +21,6 @@ export default function Signup() {
   const onSubmit = async (formData) => {
     try {
       const data = await RegisterFunction(formData, avatar);
-      console.log(data);
       if (data.data.success === true) {
         window.localStorage.setItem("token", data.data.token);
         toast.success(data?.data.message);
@@ -99,10 +98,10 @@ export default function Signup() {
               )}
 
               <input
-                {...register("banner")}
+                {...register("avatar")}
                 type="file"
                 accept=".png, .jpg, .jpeg"
-                name="banner"
+                name="file"
                 className="block p-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={handlePhoto}
               />

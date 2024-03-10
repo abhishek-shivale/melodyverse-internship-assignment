@@ -16,7 +16,7 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
     author: {
-      type: mongoose.Schema.ObjectId,
+      type: String,
       required: true,
     },
   },
@@ -25,6 +25,6 @@ const postSchema = new mongoose.Schema(
   }
 );
 
-const postModel = mongoose.model('Post', postSchema)
+const postModel = mongoose.model("Post", postSchema);
 
-export default postModel
+export default postModel;

@@ -5,20 +5,20 @@ import { v4 as uuidv4 } from "uuid";
 
 
 export const createPost = asyncMiddleware(async(req,res,next)=>{
-    const {title,description,banner,} = req.body
-    const user = await userModel.findOne({id:req.id})
-    if(!user){
-        return res.status(404).json({
-          success: false,
-          message: "You dont permission to This resource",
-        });
-    }
+    const {title,description,banner, author} = req.body
+    //const user = await userModel.findOne({id:req.id})
+    // if(!user){
+    //     return res.status(404).json({
+    //       success: false,
+    //       message: "You dont permission to This resource",
+    //     });
+    // }
     const newPost = await postModel.create({
       id: uuidv4(),
       title: title,
       description: description,
       banner: banner,
-      author: user._id,
+      author: author
     });
 
     res.status(200).json({
