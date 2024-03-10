@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 function Post(props) {
   const navigate = useNavigate();
-
   return (
     <>
-      <div key={props.post.id} className="mx-14 my-8">
+      <div key={props.post.id} ref={props.postRef} className="my-8 mx-14">
         <div className="font-bold">{props.post.title}</div>
         <div
           className="flex justify-center "
